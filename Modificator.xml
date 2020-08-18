@@ -7,8 +7,11 @@
 		<mdl_name>Modificator</mdl_name>
 		<mdl_version>1</mdl_version>
 		<mdl_prefix>mdf</mdl_prefix>
-		<mdl_url/>
-		<mdl_lastupd>2020-08-18 08:02:45</mdl_lastupd>
+		<mdl_url><![CDATA[{
+	"type": "git",
+	"origin": { "uri": "https://github.com/Campano/module-modificator.git" }
+}]]></mdl_url>
+		<mdl_lastupd>2020-08-18 08:18:07</mdl_lastupd>
 		<mdl_comment><![CDATA[Tools to modify some application configuration. Targets untrained users.]]></mdl_comment>
 	</data>
 </object>
