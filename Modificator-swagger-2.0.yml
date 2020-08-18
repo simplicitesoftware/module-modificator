@@ -1,0 +1,1071 @@
+#  ___ _            _ _    _ _    __
+# / __(_)_ __  _ __| (_)__(_) |_ /_/
+# \__ \ | '  \| '_ \ | / _| |  _/ -_)
+# |___/_|_|_|_| .__/_|_\__|_|\__\___|
+#             |_| Module: Modificator 1
+paths:
+  /rest/MdfList:
+    get:
+      summary: Search MdfList business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflist-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfMdfList'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: lov_name
+        description: Search filter for Liste
+        type: string
+        required: false
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Nom Module
+        type: string
+        required: false
+      - in: query
+        name: lov_model_id
+        description: Search filter for Modèle
+        type: string
+        required: false
+      - in: query
+        name: lov_model_id__mod_name
+        description: Search filter for Modèle
+        type: string
+        required: false
+      - in: query
+        name: lov_model_id__mod_image
+        description: Search filter for Image
+        type: string
+        required: false
+      tags:
+      - MdfList
+  /login:
+    get:
+      summary: Login (obtain bearer token)
+      security:
+      - basicAuth: []
+      produces:
+      - text/plain
+      - application/json
+      operationId: login
+      responses:
+        '200':
+          description: Successful login
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: _output
+        description: Optional output format
+        type: string
+        required: false
+        enum:
+        - json
+        - oauth2
+        - token
+      tags:
+      - session
+  /logout:
+    get:
+      summary: Logout (revoke bearer token)
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: logout
+      responses:
+        '200':
+          description: Successfull logout
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      tags:
+      - session
+  /rest/MdfListCode:
+    get:
+      summary: Search MdfListCode business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflistcode-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfMdfListCode'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: lov_list_id
+        description: Search filter for Liste
+        type: string
+        required: false
+      - in: query
+        name: lov_list_id__lov_name
+        description: Search filter for Liste
+        type: string
+        required: false
+      - in: query
+        name: lov_code
+        description: Search filter for Code
+        type: string
+        required: false
+      - in: query
+        name: lov_order_by
+        description: Search filter for Ordre
+        type: integer
+        required: false
+      - in: query
+        name: lov_label
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Nom Module
+        type: string
+        required: false
+      - in: query
+        name: lov_color
+        description: Search filter for Couleur du texte
+        type: string
+        required: false
+      - in: query
+        name: lov_color_bg
+        description: Search filter for Couleur du fond
+        type: string
+        required: false
+      - in: query
+        name: lov_icon
+        description: Search filter for Icone
+        type: string
+        required: false
+      - in: query
+        name: lov_display
+        description: Search filter for Affichage en liste
+        type: string
+        required: false
+        enum:
+        - I
+        - L
+      tags:
+      - MdfListCode
+  /rest/MdfListCode/{row_id}:
+    post:
+      summary: Create a new MdfListCodebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflistcode-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfListCode'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/MdfListCode'
+        in: body
+        name: body
+      tags:
+      - MdfListCode
+      consumes:
+      - application/json
+    get:
+      summary: Get a MdfListCode business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflistcode-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfListCode'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - MdfListCode
+    delete:
+      summary: Delete a MdfListCode business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflistcode-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - MdfListCode
+    put:
+      summary: Update a MdfListCodebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflistcode-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfListCode'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/MdfListCode'
+        in: body
+        name: body
+      tags:
+      - MdfListCode
+      consumes:
+      - application/json
+  /rest/MdfTranslate:
+    get:
+      summary: Search MdfTranslate business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdftranslate-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfMdfTranslate'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: _crosstab
+        description: Apply pivot table
+        type: string
+        required: false
+        enum:
+        - TSL
+      - in: query
+        name: _crosstabcubes
+        description: Pivot table data as cubes?
+        type: boolean
+        required: false
+      - in: query
+        name: tsl_type
+        description: Search filter for Type
+        type: string
+        required: false
+        enum:
+        - O
+        - F
+        - L
+        - Z
+        - R
+        - K
+        - A
+        - V
+        - C
+        - X
+        - G
+        - S
+        - Q
+        - P
+        - T
+        - B
+        - U
+        - W
+      - in: query
+        name: tsl_id
+        description: Search filter for Cible
+        type: string
+        required: false
+      - in: query
+        name: tsl_target
+        description: Search filter for Cible
+        type: string
+        required: false
+      - in: query
+        name: tsl_lang
+        description: Search filter for Langue
+        type: string
+        required: false
+        enum:
+        - ANY
+        - FRA
+      - in: query
+        name: tsl_value
+        description: Search filter for Traduction
+        type: string
+        required: false
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Nom Module
+        type: string
+        required: false
+      tags:
+      - MdfTranslate
+  /rest/MdfList/{row_id}:
+    post:
+      summary: Create a new MdfListbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflist-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfList'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/MdfList'
+        in: body
+        name: body
+      tags:
+      - MdfList
+      consumes:
+      - application/json
+    get:
+      summary: Get a MdfList business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflist-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfList'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - MdfList
+    delete:
+      summary: Delete a MdfList business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflist-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - MdfList
+    put:
+      summary: Update a MdfListbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdflist-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfList'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/MdfList'
+        in: body
+        name: body
+      tags:
+      - MdfList
+      consumes:
+      - application/json
+  /rest/MdfTranslate/{row_id}:
+    post:
+      summary: Create a new MdfTranslatebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdftranslate-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfTranslate'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/MdfTranslate'
+        in: body
+        name: body
+      tags:
+      - MdfTranslate
+      consumes:
+      - application/json
+    get:
+      summary: Get a MdfTranslate business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdftranslate-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfTranslate'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - MdfTranslate
+    delete:
+      summary: Delete a MdfTranslate business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdftranslate-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - MdfTranslate
+    put:
+      summary: Update a MdfTranslatebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-mdftranslate-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/MdfTranslate'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/MdfTranslate'
+        in: body
+        name: body
+      tags:
+      - MdfTranslate
+      consumes:
+      - application/json
+  /:
+    get:
+      summary: Get user session information
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: info
+      responses:
+        '200':
+          description: Success in getting user session information
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: texts
+        description: Texts?
+        type: boolean
+        required: false
+      tags:
+      - session
+securityDefinitions:
+  basicAuth:
+    type: basic
+  bearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+definitions:
+  Error404:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 404
+  ArrayOfMdfList:
+    type: array
+    items:
+      $ref: '#/definitions/MdfList'
+  MdfTranslate:
+    type: object
+    properties:
+      tsl_target:
+        description: Cible
+        type: string
+      row_module_id__mdl_name:
+        description: Nom Module
+        type: string
+      tsl_id:
+        description: Cible
+        type: string
+      row_module_id:
+        description: Module
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      tsl_value:
+        description: Traduction
+        type: string
+      tsl_type:
+        description: Type
+        type: string
+        enum:
+        - O
+        - F
+        - L
+        - Z
+        - R
+        - K
+        - A
+        - V
+        - C
+        - X
+        - G
+        - S
+        - Q
+        - P
+        - T
+        - B
+        - U
+        - W
+      tsl_lang:
+        description: Langue
+        type: string
+        enum:
+        - ANY
+        - FRA
+  MdfList:
+    type: object
+    properties:
+      row_module_id__mdl_name:
+        description: Nom Module
+        type: string
+      row_module_id:
+        description: Module
+        type: string
+      lov_model_id__mod_name:
+        description: Modèle
+        type: string
+      lov_model_id:
+        description: Modèle
+        type: string
+      lov_model_id__mod_image:
+        description: Image
+        type: object
+      lov_name:
+        description: Liste
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+  PublicationResult:
+    type: object
+    properties:
+      mime:
+        description: MIME type
+        type: string
+      content:
+        description: Content (plain text or base64 encoded)
+        type: string
+  ArrayOfMdfListCode:
+    type: array
+    items:
+      $ref: '#/definitions/MdfListCode'
+  ActionResult:
+    type: object
+    properties:
+      result:
+        description: Action result
+        type: string
+  TreeviewData:
+    type: object
+    properties:
+      item:
+        description: Object item with lists of linked objects' items
+        type: object
+  ArrayOfMdfTranslate:
+    type: array
+    items:
+      $ref: '#/definitions/MdfTranslate'
+  Error400:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 400
+  Error401:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 401
+  Error500:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 500
+  Error403:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 403
+  MdfListCode:
+    type: object
+    properties:
+      row_module_id__mdl_name:
+        description: Nom Module
+        type: string
+      lov_color_bg:
+        description: Couleur du fond
+        type: string
+        example: '#RRGGBB'
+      lov_color:
+        description: Couleur du texte
+        type: string
+        example: '#RRGGBB'
+      lov_label:
+        description: Description
+        type: string
+      lov_list_id__lov_name:
+        description: Liste
+        type: string
+      row_module_id:
+        description: Module
+        type: string
+      lov_display:
+        description: Affichage en liste
+        type: array
+        items:
+          type: string
+          enum:
+          - I
+          - L
+      lov_list_id:
+        description: Liste
+        type: string
+      lov_order_by:
+        description: Ordre
+        type: integer
+      row_id:
+        description: Unique technical row ID
+        type: string
+      lov_code:
+        description: Code
+        type: string
+      lov_icon:
+        description: Icone
+        type: string
+swagger: '2.0'
+info:
+  license:
+    name: Simplicite license
+    url: http://www.simplicitesoftware.com
+  contact:
+    name: Simplicite Software
+    url: http://www.simplicitesoftware.com
+    email: contact@simplicitesoftware.com
+  description: API for module Modificator
+  title: Modificator
+  version: '1'
+tags:
+- name: MdfList
+  description: Liste
+- name: MdfListCode
+  description: Item de liste
+- name: MdfTranslate
+  description: Traductions
