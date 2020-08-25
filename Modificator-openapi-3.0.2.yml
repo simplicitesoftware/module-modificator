@@ -102,6 +102,46 @@ components:
         content:
           description: Content (plain text or base64 encoded)
           type: string
+    MdfFieldListValue:
+      type: object
+      properties:
+        lov_code_id:
+          description: Code
+          type: string
+        lov_lang:
+          description: Langue
+          type: string
+          enum:
+          - ANY
+          - FRA
+        row_module_id__mdl_name:
+          description: Nom Module
+          type: string
+        lov_code_id__lov_list_id:
+          description: Liste Code
+          type: string
+        lov_code_id__lov_order_by:
+          description: Ordre
+          type: integer
+        row_module_id:
+          description: Module
+          type: string
+        row_id:
+          description: Unique technical row ID
+          type: string
+        lov_value:
+          description: Valeur
+          type: string
+        lov_code_id__lov_list_id__lov_name:
+          description: Liste
+          type: string
+        lov_code_id__lov_code:
+          description: Code
+          type: string
+    ArrayOfMdfFieldListValue:
+      type: array
+      items:
+        $ref: '#/components/schemas/MdfFieldListValue'
     ArrayOfMdfListCode:
       type: array
       items:
@@ -305,6 +345,201 @@ paths:
         required: false
       tags:
       - MdfList
+  /rest/MdfFieldListValue/{row_id}:
+    post:
+      summary: Create a new MdfFieldListValuebusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MdfFieldListValue'
+      operationId: obj-mdffieldlistvalue-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfFieldListValue'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfFieldListValue
+    get:
+      summary: Get a MdfFieldListValue business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-mdffieldlistvalue-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfFieldListValue'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - MdfFieldListValue
+    delete:
+      summary: Delete a MdfFieldListValue business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-mdffieldlistvalue-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfFieldListValue
+    put:
+      summary: Update a MdfFieldListValuebusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MdfFieldListValue'
+      operationId: obj-mdffieldlistvalue-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfFieldListValue'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfFieldListValue
   /login:
     get:
       summary: Login (obtain bearer token)
@@ -355,6 +590,111 @@ paths:
                 $ref: '#/components/schemas/Error401'
       tags:
       - session
+  /rest/MdfFieldListValue:
+    get:
+      summary: Search MdfFieldListValue business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      operationId: obj-mdffieldlistvalue-search
+      responses:
+        '200':
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMdfFieldListValue'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: lov_code_id
+        description: Search filter for Code
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: lov_code_id__lov_list_id
+        description: Search filter for Liste Code
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: lov_code_id__lov_list_id__lov_name
+        description: Search filter for Liste
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: lov_code_id__lov_code
+        description: Search filter for Code
+        required: false
+      - schema:
+          type: integer
+        in: query
+        name: lov_code_id__lov_order_by
+        description: Search filter for Ordre
+        required: false
+      - schema:
+          type: string
+          enum:
+          - ANY
+          - FRA
+        in: query
+        name: lov_lang
+        description: Search filter for Langue
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: lov_value
+        description: Search filter for Valeur
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id
+        description: Search filter for Module
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Nom Module
+        required: false
+      tags:
+      - MdfFieldListValue
   /rest/MdfListCode:
     get:
       summary: Search MdfListCode business object records or get contextualized metadata
@@ -1219,6 +1559,8 @@ info:
   title: Modificator
   version: '1'
 tags:
+- name: MdfFieldListValue
+  description: Liste
 - name: MdfList
   description: Liste
 - name: MdfListCode

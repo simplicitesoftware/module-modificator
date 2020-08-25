@@ -13,6 +13,17 @@
 
 Tools to modify some application configuration. Targets untrained users.
 
+`MdfFieldListValue` business object definition
+----------------------------------------------
+
+
+
+### Fields
+
+| Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      | 
+| ------------------------------------------------------------ | ---------------------------------------- | -------- | --------- | -------- | -------------------------------------------------------------------------------- |
+| `lov_code_id` link to **`MdfListCode`**                      | id                                       | yes*     | yes       |          | -                                                                                |
+
 `MdfList` business object definition
 ------------------------------------
 
