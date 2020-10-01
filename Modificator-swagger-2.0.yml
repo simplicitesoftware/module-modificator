@@ -43,6 +43,11 @@ paths:
         type: boolean
         required: false
       - in: query
+        name: _indexsearch
+        description: Index search query
+        type: string
+        required: false
+      - in: query
         name: lov_name
         description: Search filter for Liste
         type: string
@@ -319,6 +324,11 @@ paths:
         name: _doc
         description: Documentation?
         type: boolean
+        required: false
+      - in: query
+        name: _indexsearch
+        description: Index search query
+        type: string
         required: false
       - in: query
         name: lov_code_id
@@ -667,6 +677,11 @@ paths:
         name: _doc
         description: Documentation?
         type: boolean
+        required: false
+      - in: query
+        name: _indexsearch
+        description: Index search query
+        type: string
         required: false
       - in: query
         name: _crosstab

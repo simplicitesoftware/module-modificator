@@ -20,7 +20,7 @@
 	<action>upsert</action>
 	<data>
 		<sys_code>MDF_MODULES</sys_code>
-		<sys_value><![CDATA[Demo]]></sys_value>
+		<sys_value><![CDATA[Trustmed]]></sys_value>
 		<sys_type>PRV</sys_type>
 		<sys_desc><![CDATA[Comma-separated list of editable modules for modificator or `false` to deactivate.]]></sys_desc>
 		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
@@ -198,7 +198,7 @@
 		<obo_delspec/>
 		<obo_exportorder/>
 		<obo_distinct>0</obo_distinct>
-		<obo_indexable>0</obo_indexable>
+		<obo_indexable>1</obo_indexable>
 		<obo_groupby>0</obo_groupby>
 		<obo_dfltref/>
 		<obo_template_id.tpl_name/>
@@ -258,7 +258,7 @@
 		<obo_delspec/>
 		<obo_exportorder/>
 		<obo_distinct>0</obo_distinct>
-		<obo_indexable>0</obo_indexable>
+		<obo_indexable>1</obo_indexable>
 		<obo_groupby>0</obo_groupby>
 		<obo_dfltref/>
 		<obo_template_id.tpl_name>MdfList</obo_template_id.tpl_name>
@@ -378,7 +378,7 @@
 		<obo_delspec/>
 		<obo_exportorder/>
 		<obo_distinct>0</obo_distinct>
-		<obo_indexable>0</obo_indexable>
+		<obo_indexable>1</obo_indexable>
 		<obo_groupby>0</obo_groupby>
 		<obo_dfltref/>
 		<obo_template_id.tpl_name>Base</obo_template_id.tpl_name>
@@ -770,6 +770,7 @@
 		<tsl_id.shc_name>MdfClearCache</tsl_id.shc_name>
 		<tsl_lang>FRA</tsl_lang>
 		<tsl_value>Appliquer changements</tsl_value>
+		<tsl_tooltip/>
 		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
 	</data>
 </object>

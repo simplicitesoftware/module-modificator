@@ -13,12 +13,18 @@ public class MdfFieldListValue extends FieldListValue {
 	
 	@Override
 	public void postLoad() {
-		setDefaultSearchSpec(MdfTool.getMdfSearchSpec(getGrant()));
+		MdfTool.postLoad(this);
 		super.postLoad();
 	}
 	
 	@Override
-	public String postUpdate() {
-		return Message.formatWarning("MDF_WARN_NOTIFY", null, null);
+	public String preSave() {
+		MdfTool.preSave(this);
+		return super.preSave();
+	}
+	
+	@Override
+	public String postSave() {
+		return MdfTool.postSave();
 	}	
 }

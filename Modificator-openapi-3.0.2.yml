@@ -310,6 +310,12 @@ paths:
       - schema:
           type: string
         in: query
+        name: _indexsearch
+        description: Index search query
+        required: false
+      - schema:
+          type: string
+        in: query
         name: lov_name
         description: Search filter for Liste
         required: false
@@ -635,6 +641,12 @@ paths:
         in: query
         name: _doc
         description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: _indexsearch
+        description: Index search query
         required: false
       - schema:
           type: string
@@ -1050,6 +1062,12 @@ paths:
         in: query
         name: _doc
         description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: _indexsearch
+        description: Index search query
         required: false
       - schema:
           type: string
