@@ -26,6 +26,6 @@ public class MdfList extends FieldList {
 	
 	@Override
 	public String postSave() {
-		return MdfTool.postSave();
+		return MdfTool.postSave(this);
 	}
 }

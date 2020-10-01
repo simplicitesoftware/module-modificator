@@ -3,6 +3,7 @@ package com.simplicite.commons.Modificator;
 import java.util.*;
 import com.simplicite.util.*;
 import com.simplicite.util.tools.*;
+import com.simplicite.objects.System.Module;
 
 /**
  * Shared code MdfTool
@@ -15,13 +16,21 @@ public class MdfTool implements java.io.Serializable {
 	}
 	
 	public static void preSave(ObjectDB obj){
-		// creates module if not existant
-		String destModuleId = ModuleDB.getModuleId(obj.getGrant().getParameter("MDF_SAVE_MODULE"), true);
-		obj.setFieldValue("row_module_id", destModuleId);		
+		obj.setFieldValue("row_module_id", getDestModuleId(obj.getGrant()));		
 	}
 	
-	public static String postSave(){
+	public static String postSave(ObjectDB obj){
+		Module mdl = (Module) obj.getGrant().getTmpObject("Module");
+		synchronized(mdl){
+			mdl.select(getDestModuleId(obj.getGrant()));
+			mdl.exportToXML();
+		}
 		return Message.formatWarning("MDF_WARN_NOTIFY", null, null);
+	}
+	
+	// creates module if not existant
+	private static String getDestModuleId(Grant g){
+		return ModuleDB.getModuleId(g.getParameter("MDF_SAVE_MODULE"), true);
 	}
 	
 	private static String getMdfSearchSpec(Grant g){

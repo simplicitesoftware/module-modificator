@@ -3,13 +3,13 @@ package com.simplicite.objects.Modificator;
 import java.util.*;
 import com.simplicite.util.*;
 import com.simplicite.util.tools.*;
-import com.simplicite.objects.System.FieldListCode;
+import com.simplicite.objects.System.TranslateField;
 import com.simplicite.commons.Modificator.MdfTool;
 
 /**
- * Business object MdfListCode
+ * Business object MdfTranslateField
  */
-public class MdfListCode extends FieldListCode {
+public class MdfTranslateField extends TranslateField {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
@@ -27,5 +27,5 @@ public class MdfListCode extends FieldListCode {
 	@Override
 	public String postSave() {
 		return MdfTool.postSave(this);
-	}
+	}	
 }

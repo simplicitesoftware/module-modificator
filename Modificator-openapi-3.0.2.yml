@@ -20,6 +20,77 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/MdfList'
+    ArrayOfMdfTranslateField:
+      type: array
+      items:
+        $ref: '#/components/schemas/MdfTranslateField'
+    MdfTranslateField:
+      type: object
+      properties:
+        row_module_id__mdl_name:
+          description: Nom Module
+          type: string
+        tsl_simplehelp:
+          description: Aide simple
+          type: string
+        row_module_id:
+          description: Module
+          type: string
+        tsl_id__fld_name:
+          description: Nom logique Cible
+          type: string
+        tsl_placeholder:
+          description: Texte indicatif si vide
+          type: string
+        tsl_tooltip:
+          description: Info-bulle
+          type: string
+        tsl_listhelp:
+          description: Aide de colonne
+          type: string
+        tsl_value:
+          description: Traduction
+          type: string
+        tsl_lang:
+          description: Langue
+          type: string
+          enum:
+          - ANY
+          - FRA
+        tsl_id:
+          description: Cible
+          type: string
+        tsl_typeField:
+          description: Type
+          type: string
+          enum:
+          - O
+          - F
+          - L
+          - Z
+          - R
+          - K
+          - A
+          - V
+          - C
+          - X
+          - G
+          - S
+          - Q
+          - P
+          - T
+          - B
+          - U
+          - W
+        tsl_object_id:
+          description: Virtual link to list all fields translations in Object Internal
+          type: string
+        row_id:
+          description: Unique technical row ID
+          type: string
+        tsl_short_value:
+          description: Libellé court en liste
+          type: string
     MdfTranslate:
       type: object
       properties:
@@ -351,6 +422,426 @@ paths:
         required: false
       tags:
       - MdfList
+  /login:
+    get:
+      summary: Login (obtain bearer token)
+      security:
+      - basicAuth: []
+      operationId: login
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json: {}
+            text/plain: {}
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - json
+          - oauth2
+          - token
+        in: query
+        name: _output
+        description: Optional output format
+        required: false
+      tags:
+      - session
+  /logout:
+    get:
+      summary: Logout (revoke bearer token)
+      security:
+      - bearerAuth: []
+      operationId: logout
+      responses:
+        '200':
+          description: Successfull logout
+          content:
+            application/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+      tags:
+      - session
+  /rest/MdfTranslateField:
+    get:
+      summary: Search MdfTranslateField business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      operationId: obj-mdftranslatefield-search
+      responses:
+        '200':
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfMdfTranslateField'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+          enum:
+          - O
+          - F
+          - L
+          - Z
+          - R
+          - K
+          - A
+          - V
+          - C
+          - X
+          - G
+          - S
+          - Q
+          - P
+          - T
+          - B
+          - U
+          - W
+        in: query
+        name: tsl_typeField
+        description: Search filter for Type
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_id
+        description: Search filter for Cible
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_id__fld_name
+        description: Search filter for Nom logique Cible
+        required: false
+      - schema:
+          type: string
+          enum:
+          - ANY
+          - FRA
+        in: query
+        name: tsl_lang
+        description: Search filter for Langue
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_value
+        description: Search filter for Traduction
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_simplehelp
+        description: Search filter for Aide simple
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_short_value
+        description: Search filter for Libellé court en liste
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_placeholder
+        description: Search filter for Texte indicatif si vide
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_listhelp
+        description: Search filter for Aide de colonne
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id
+        description: Search filter for Module
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Nom Module
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_object_id
+        description: Search filter for Virtual link to list all fields translations
+          in Object Internal
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsl_tooltip
+        description: Search filter for Info-bulle
+        required: false
+      tags:
+      - MdfTranslateField
+  /rest/MdfList/{row_id}:
+    post:
+      summary: Create a new MdfListbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MdfList'
+      operationId: obj-mdflist-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfList'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfList
+    get:
+      summary: Get a MdfList business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-mdflist-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfList'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - MdfList
+    delete:
+      summary: Delete a MdfList business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-mdflist-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfList
+    put:
+      summary: Update a MdfListbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MdfList'
+      operationId: obj-mdflist-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfList'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfList
+  /:
+    get:
+      summary: Get user session information
+      security:
+      - bearerAuth: []
+      operationId: info
+      responses:
+        '200':
+          description: Success in getting user session information
+          content:
+            application/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: texts
+        description: Texts?
+        required: false
+      tags:
+      - session
   /rest/MdfFieldListValue/{row_id}:
     post:
       summary: Create a new MdfFieldListValuebusiness object record
@@ -546,56 +1037,6 @@ paths:
         required: true
       tags:
       - MdfFieldListValue
-  /login:
-    get:
-      summary: Login (obtain bearer token)
-      security:
-      - basicAuth: []
-      operationId: login
-      responses:
-        '200':
-          description: Successful login
-          content:
-            application/json: {}
-            text/plain: {}
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-      parameters:
-      - schema:
-          type: string
-          enum:
-          - json
-          - oauth2
-          - token
-        in: query
-        name: _output
-        description: Optional output format
-        required: false
-      tags:
-      - session
-  /logout:
-    get:
-      summary: Logout (revoke bearer token)
-      security:
-      - bearerAuth: []
-      operationId: logout
-      responses:
-        '200':
-          description: Successfull logout
-          content:
-            application/json: {}
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-      tags:
-      - session
   /rest/MdfFieldListValue:
     get:
       summary: Search MdfFieldListValue business object records or get contextualized
@@ -1018,6 +1459,201 @@ paths:
         required: true
       tags:
       - MdfListCode
+  /rest/MdfTranslateField/{row_id}:
+    post:
+      summary: Create a new MdfTranslateFieldbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MdfTranslateField'
+      operationId: obj-mdftranslatefield-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfTranslateField'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfTranslateField
+    get:
+      summary: Get a MdfTranslateField business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-mdftranslatefield-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfTranslateField'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - MdfTranslateField
+    delete:
+      summary: Delete a MdfTranslateField business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-mdftranslatefield-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfTranslateField
+    put:
+      summary: Update a MdfTranslateFieldbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MdfTranslateField'
+      operationId: obj-mdftranslatefield-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MdfTranslateField'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - MdfTranslateField
   /rest/MdfTranslate:
     get:
       summary: Search MdfTranslate business object records or get contextualized metadata
@@ -1149,201 +1785,6 @@ paths:
         required: false
       tags:
       - MdfTranslate
-  /rest/MdfList/{row_id}:
-    post:
-      summary: Create a new MdfListbusiness object record
-      security:
-      - bearerAuth: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MdfList'
-      operationId: obj-mdflist-create
-      responses:
-        '200':
-          description: Success in creating a new business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MdfList'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - MdfList
-    get:
-      summary: Get a MdfList business object record
-      security:
-      - bearerAuth: []
-      operationId: obj-mdflist-get
-      responses:
-        '200':
-          description: Success in getting a single business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MdfList'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_documents
-        description: Inline documents?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_thumbnails
-        description: Inline documents' thumbnails?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_objects
-        description: Inline objects?
-        required: false
-      tags:
-      - MdfList
-    delete:
-      summary: Delete a MdfList business object record
-      security:
-      - bearerAuth: []
-      operationId: obj-mdflist-delete
-      responses:
-        '200':
-          description: Success in deleting a business object record
-          content:
-            application/json: {}
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - MdfList
-    put:
-      summary: Update a MdfListbusiness object record
-      security:
-      - bearerAuth: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MdfList'
-      operationId: obj-mdflist-update
-      responses:
-        '200':
-          description: Success in updating a business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MdfList'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - MdfList
   /rest/MdfTranslate/{row_id}:
     post:
       summary: Create a new MdfTranslatebusiness object record
@@ -1539,32 +1980,6 @@ paths:
         required: true
       tags:
       - MdfTranslate
-  /:
-    get:
-      summary: Get user session information
-      security:
-      - bearerAuth: []
-      operationId: info
-      responses:
-        '200':
-          description: Success in getting user session information
-          content:
-            application/json: {}
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-      parameters:
-      - schema:
-          type: boolean
-        in: query
-        name: texts
-        description: Texts?
-        required: false
-      tags:
-      - session
 info:
   license:
     name: Simplicite license
@@ -1585,3 +2000,5 @@ tags:
   description: Item de liste
 - name: MdfTranslate
   description: Traductions
+- name: MdfTranslateField
+  description: Traduction d'attribut
