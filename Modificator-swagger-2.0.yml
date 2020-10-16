@@ -204,6 +204,7 @@ paths:
         required: false
         enum:
         - ANY
+        - ENU
         - FRA
       - in: query
         name: tsl_value
@@ -676,6 +677,7 @@ paths:
         required: false
         enum:
         - ANY
+        - ENU
         - FRA
       - in: query
         name: lov_value
@@ -1212,6 +1214,7 @@ paths:
         required: false
         enum:
         - ANY
+        - ENU
         - FRA
       - in: query
         name: tsl_value
@@ -1451,6 +1454,7 @@ definitions:
         type: string
         enum:
         - ANY
+        - ENU
         - FRA
       tsl_id:
         description: Cible
@@ -1534,6 +1538,7 @@ definitions:
         type: string
         enum:
         - ANY
+        - ENU
         - FRA
   MdfList:
     type: object
@@ -1579,6 +1584,7 @@ definitions:
         type: string
         enum:
         - ANY
+        - ENU
         - FRA
       row_module_id__mdl_name:
         description: Nom Module
@@ -1738,6 +1744,6 @@ tags:
 - name: MdfListCode
   description: Item de liste
 - name: MdfTranslate
-  description: Traductions
+  description: Traduction
 - name: MdfTranslateField
   description: Traduction d'attribut

@@ -56,6 +56,7 @@ components:
           type: string
           enum:
           - ANY
+          - ENU
           - FRA
         tsl_id:
           description: Cible
@@ -139,6 +140,7 @@ components:
           type: string
           enum:
           - ANY
+          - ENU
           - FRA
     MdfList:
       type: object
@@ -184,6 +186,7 @@ components:
           type: string
           enum:
           - ANY
+          - ENU
           - FRA
         row_module_id__mdl_name:
           description: Nom Module
@@ -559,6 +562,7 @@ paths:
           type: string
           enum:
           - ANY
+          - ENU
           - FRA
         in: query
         name: tsl_lang
@@ -1123,6 +1127,7 @@ paths:
           type: string
           enum:
           - ANY
+          - ENU
           - FRA
         in: query
         name: lov_lang
@@ -1760,6 +1765,7 @@ paths:
           type: string
           enum:
           - ANY
+          - ENU
           - FRA
         in: query
         name: tsl_lang
@@ -1999,6 +2005,6 @@ tags:
 - name: MdfListCode
   description: Item de liste
 - name: MdfTranslate
-  description: Traductions
+  description: Traduction
 - name: MdfTranslateField
   description: Traduction d'attribut

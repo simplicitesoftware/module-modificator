@@ -11,19 +11,8 @@
 	"type": "git",
 	"origin": { "uri": "https://github.com/Campano/module-modificator.git" }
 }]]></mdl_url>
-		<mdl_lastupd>2020-08-18 08:18:07</mdl_lastupd>
+		<mdl_lastupd>2020-10-16 10:46:54</mdl_lastupd>
 		<mdl_comment><![CDATA[Tools to modify some application configuration. Targets untrained users.]]></mdl_comment>
-	</data>
-</object>
-<object>
-	<name>SystemParam</name>
-	<action>upsert</action>
-	<data>
-		<sys_code>MDF_MODULES</sys_code>
-		<sys_value><![CDATA[Demo]]></sys_value>
-		<sys_type>PRV</sys_type>
-		<sys_desc><![CDATA[Comma-separated list of editable modules for modificator or `false` to deactivate.]]></sys_desc>
-		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
 	</data>
 </object>
 <object>
@@ -161,8 +150,7 @@
 		<ofa_ui><![CDATA[<div>
   <div class="field" data-field="lov_name"></div>
   <div class="field" data-field="row_module_id__mdl_name"></div>
-</div>
-]]></ofa_ui>
+</div>]]></ofa_ui>
 		<ofa_icon>star</ofa_icon>
 		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
 	</data>
@@ -568,7 +556,7 @@
 		<obf_ref_export>1</obf_ref_export>
 		<obf_copy>1</obf_copy>
 		<obf_associate/>
-		<obf_inline/>
+		<obf_inline>0</obf_inline>
 		<obf_rendering/>
 		<obf_treedepth/>
 		<obf_area_id.ofa_name>FieldListCode-1</obf_area_id.ofa_name>
@@ -592,7 +580,7 @@
 		<obf_ref_export>1</obf_ref_export>
 		<obf_copy>0</obf_copy>
 		<obf_associate/>
-		<obf_inline/>
+		<obf_inline>0</obf_inline>
 		<obf_rendering/>
 		<obf_treedepth/>
 		<obf_area_id.ofa_name/>
@@ -605,17 +593,26 @@
 	<action>upsert</action>
 	<data>
 		<fct_name>D-MdfDomain</fct_name>
-		<fct_object_id.obj_type>D</fct_object_id.obj_type>
 		<fct_object_id.obj_name>MdfDomain</fct_object_id.obj_name>
+		<fct_object_id.obj_type>D</fct_object_id.obj_type>
 		<fct_function>L</fct_function>
 		<fct_action_id.act_name/>
 		<fct_view_id.viw_name/>
 		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
 	</data>
 	<data>
-		<fct_name>MDF_LST_R</fct_name>
+		<fct_name>MdfFieldListValue-CUD</fct_name>
+		<fct_object_id.obj_name>MdfFieldListValue</fct_object_id.obj_name>
 		<fct_object_id.obj_type>O</fct_object_id.obj_type>
+		<fct_function>CMS</fct_function>
+		<fct_action_id.act_name/>
+		<fct_view_id.viw_name/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
+	<data>
+		<fct_name>MDF_LST_R</fct_name>
 		<fct_object_id.obj_name>MdfList</fct_object_id.obj_name>
+		<fct_object_id.obj_type>O</fct_object_id.obj_type>
 		<fct_function>L</fct_function>
 		<fct_action_id.act_name/>
 		<fct_view_id.viw_name/>
@@ -623,17 +620,8 @@
 	</data>
 	<data>
 		<fct_name>MDF_LVCD_CRUD</fct_name>
-		<fct_object_id.obj_type>O</fct_object_id.obj_type>
 		<fct_object_id.obj_name>MdfListCode</fct_object_id.obj_name>
-		<fct_function>CMS</fct_function>
-		<fct_action_id.act_name/>
-		<fct_view_id.viw_name/>
-		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
-	</data>
-	<data>
-		<fct_name>MdfFieldListValue-CUD</fct_name>
 		<fct_object_id.obj_type>O</fct_object_id.obj_type>
-		<fct_object_id.obj_name>MdfFieldListValue</fct_object_id.obj_name>
 		<fct_function>CMS</fct_function>
 		<fct_action_id.act_name/>
 		<fct_view_id.viw_name/>
@@ -641,8 +629,8 @@
 	</data>
 	<data>
 		<fct_name>MdfTranslate-CUD</fct_name>
-		<fct_object_id.obj_type>O</fct_object_id.obj_type>
 		<fct_object_id.obj_name>MdfTranslate</fct_object_id.obj_name>
+		<fct_object_id.obj_type>O</fct_object_id.obj_type>
 		<fct_function>CMS</fct_function>
 		<fct_action_id.act_name/>
 		<fct_view_id.viw_name/>
@@ -650,8 +638,8 @@
 	</data>
 	<data>
 		<fct_name>RST_TSLF_CRUD</fct_name>
-		<fct_object_id.obj_type>O</fct_object_id.obj_type>
 		<fct_object_id.obj_name>MdfTranslateField</fct_object_id.obj_name>
+		<fct_object_id.obj_type>O</fct_object_id.obj_type>
 		<fct_function>CMS</fct_function>
 		<fct_action_id.act_name/>
 		<fct_view_id.viw_name/>
@@ -799,6 +787,14 @@
 	<data>
 		<tsl_typeObject>O</tsl_typeObject>
 		<tsl_id.obd_name>MdfDomain</tsl_id.obd_name>
+		<tsl_lang>ENU</tsl_lang>
+		<tsl_value>Modificator</tsl_value>
+		<tsl_help/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
+	<data>
+		<tsl_typeObject>O</tsl_typeObject>
+		<tsl_id.obd_name>MdfDomain</tsl_id.obd_name>
 		<tsl_lang>FRA</tsl_lang>
 		<tsl_value>Modificateur</tsl_value>
 		<tsl_help/>
@@ -808,6 +804,38 @@
 <object>
 	<name>TranslateObject</name>
 	<action>upsert</action>
+	<data>
+		<tsl_typeObject>O</tsl_typeObject>
+		<tsl_id.obo_name>MdfFieldListValue</tsl_id.obo_name>
+		<tsl_lang>ENU</tsl_lang>
+		<tsl_value>List|Lists</tsl_value>
+		<tsl_help/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
+	<data>
+		<tsl_typeObject>O</tsl_typeObject>
+		<tsl_id.obo_name>MdfList</tsl_id.obo_name>
+		<tsl_lang>ENU</tsl_lang>
+		<tsl_value>List|Lists</tsl_value>
+		<tsl_help/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
+	<data>
+		<tsl_typeObject>O</tsl_typeObject>
+		<tsl_id.obo_name>MdfListCode</tsl_id.obo_name>
+		<tsl_lang>ENU</tsl_lang>
+		<tsl_value>List item|List items</tsl_value>
+		<tsl_help/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
+	<data>
+		<tsl_typeObject>O</tsl_typeObject>
+		<tsl_id.obo_name>MdfTranslate</tsl_id.obo_name>
+		<tsl_lang>ENU</tsl_lang>
+		<tsl_value>Translation|Translations</tsl_value>
+		<tsl_help/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
 	<data>
 		<tsl_typeObject>O</tsl_typeObject>
 		<tsl_id.obo_name>MdfFieldListValue</tsl_id.obo_name>
@@ -836,7 +864,7 @@
 		<tsl_typeObject>O</tsl_typeObject>
 		<tsl_id.obo_name>MdfTranslate</tsl_id.obo_name>
 		<tsl_lang>FRA</tsl_lang>
-		<tsl_value>Traductions</tsl_value>
+		<tsl_value>Traduction|Traductions</tsl_value>
 		<tsl_help/>
 		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
 	</data>
@@ -864,6 +892,14 @@
 <object>
 	<name>TranslateView</name>
 	<action>upsert</action>
+	<data>
+		<tsl_typeView>V</tsl_typeView>
+		<tsl_id.viw_name>ModificatorScope</tsl_id.viw_name>
+		<tsl_lang>ENU</tsl_lang>
+		<tsl_value>Modificator</tsl_value>
+		<tsl_help/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
 	<data>
 		<tsl_typeView>V</tsl_typeView>
 		<tsl_id.viw_name>ModificatorScope</tsl_id.viw_name>
