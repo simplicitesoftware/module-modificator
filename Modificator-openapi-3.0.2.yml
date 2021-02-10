@@ -28,38 +28,38 @@ components:
       type: object
       properties:
         row_module_id__mdl_name:
-          description: Nom Module
+          description: Module Name
           type: string
         tsl_simplehelp:
-          description: Aide simple
+          description: Simple help
           type: string
         row_module_id:
           description: Module
           type: string
         tsl_id__fld_name:
-          description: Nom logique Cible
+          description: Target Logical name
           type: string
         tsl_placeholder:
-          description: Texte indicatif si vide
+          description: Placeholder
           type: string
         tsl_tooltip:
-          description: Info-bulle
+          description: Tooltip
           type: string
         tsl_listhelp:
-          description: Aide de colonne
+          description: Column help
           type: string
         tsl_value:
-          description: Traduction
+          description: Translation
           type: string
         tsl_lang:
-          description: Langue
+          description: Language
           type: string
           enum:
           - ANY
           - ENU
           - FRA
         tsl_id:
-          description: Cible
+          description: Target
           type: string
         tsl_typeField:
           description: Type
@@ -90,19 +90,19 @@ components:
           description: Unique technical row ID
           type: string
         tsl_short_value:
-          description: Libellé court en liste
+          description: Short label on list
           type: string
     MdfTranslate:
       type: object
       properties:
         tsl_target:
-          description: Cible
+          description: Target
           type: string
         row_module_id__mdl_name:
-          description: Nom Module
+          description: Module Name
           type: string
         tsl_id:
-          description: Cible
+          description: Target
           type: string
         row_module_id:
           description: Module
@@ -111,7 +111,7 @@ components:
           description: Unique technical row ID
           type: string
         tsl_value:
-          description: Traduction
+          description: Translation
           type: string
         tsl_type:
           description: Type
@@ -136,7 +136,7 @@ components:
           - U
           - W
         tsl_lang:
-          description: Langue
+          description: Language
           type: string
           enum:
           - ANY
@@ -146,22 +146,22 @@ components:
       type: object
       properties:
         row_module_id__mdl_name:
-          description: Nom Module
+          description: Module Name
           type: string
         row_module_id:
           description: Module
           type: string
         lov_model_id__mod_name:
-          description: Modèle
+          description: Model
           type: string
         lov_model_id:
-          description: Modèle
+          description: Diagram
           type: string
         lov_model_id__mod_image:
           description: Image
           type: object
         lov_name:
-          description: Liste
+          description: List
           type: string
         row_id:
           description: Unique technical row ID
@@ -182,20 +182,20 @@ components:
           description: Code
           type: string
         lov_lang:
-          description: Langue
+          description: Language
           type: string
           enum:
           - ANY
           - ENU
           - FRA
         row_module_id__mdl_name:
-          description: Nom Module
+          description: Module Name
           type: string
         lov_code_id__lov_list_id:
-          description: Liste Code
+          description: Code List
           type: string
         lov_code_id__lov_order_by:
-          description: Ordre
+          description: Order
           type: integer
         row_module_id:
           description: Module
@@ -204,10 +204,10 @@ components:
           description: Unique technical row ID
           type: string
         lov_value:
-          description: Valeur
+          description: Value
           type: string
         lov_code_id__lov_list_id__lov_name:
-          description: Liste
+          description: List
           type: string
         lov_code_id__lov_code:
           description: Code
@@ -284,27 +284,27 @@ components:
       type: object
       properties:
         row_module_id__mdl_name:
-          description: Nom Module
+          description: Module Name
           type: string
         lov_color_bg:
-          description: Couleur du fond
+          description: Background color
           type: string
           example: '#RRGGBB'
         lov_color:
-          description: Couleur du texte
+          description: Text color
           type: string
           example: '#RRGGBB'
         lov_label:
           description: Description
           type: string
         lov_list_id__lov_name:
-          description: Liste
+          description: List
           type: string
         row_module_id:
           description: Module
           type: string
         lov_display:
-          description: Affichage en liste
+          description: Display on list
           type: array
           items:
             type: string
@@ -312,10 +312,10 @@ components:
             - I
             - L
         lov_list_id:
-          description: Liste
+          description: List
           type: string
         lov_order_by:
-          description: Ordre
+          description: Order
           type: integer
         row_id:
           description: Unique technical row ID
@@ -324,7 +324,7 @@ components:
           description: Code
           type: string
         lov_icon:
-          description: Icone
+          description: Icon
           type: string
   securitySchemes:
     basicAuth:
@@ -391,7 +391,7 @@ paths:
           type: string
         in: query
         name: lov_name
-        description: Search filter for Liste
+        description: Search filter for List
         required: false
       - schema:
           type: string
@@ -403,19 +403,19 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Nom Module
+        description: Search filter for Module Name
         required: false
       - schema:
           type: string
         in: query
         name: lov_model_id
-        description: Search filter for Modèle
+        description: Search filter for Diagram
         required: false
       - schema:
           type: string
         in: query
         name: lov_model_id__mod_name
-        description: Search filter for Modèle
+        description: Search filter for Model
         required: false
       - schema:
           type: string
@@ -550,13 +550,13 @@ paths:
           type: string
         in: query
         name: tsl_id
-        description: Search filter for Cible
+        description: Search filter for Target
         required: false
       - schema:
           type: string
         in: query
         name: tsl_id__fld_name
-        description: Search filter for Nom logique Cible
+        description: Search filter for Target Logical name
         required: false
       - schema:
           type: string
@@ -566,37 +566,37 @@ paths:
           - FRA
         in: query
         name: tsl_lang
-        description: Search filter for Langue
+        description: Search filter for Language
         required: false
       - schema:
           type: string
         in: query
         name: tsl_value
-        description: Search filter for Traduction
+        description: Search filter for Translation
         required: false
       - schema:
           type: string
         in: query
         name: tsl_simplehelp
-        description: Search filter for Aide simple
+        description: Search filter for Simple help
         required: false
       - schema:
           type: string
         in: query
         name: tsl_short_value
-        description: Search filter for Libellé court en liste
+        description: Search filter for Short label on list
         required: false
       - schema:
           type: string
         in: query
         name: tsl_placeholder
-        description: Search filter for Texte indicatif si vide
+        description: Search filter for Placeholder
         required: false
       - schema:
           type: string
         in: query
         name: tsl_listhelp
-        description: Search filter for Aide de colonne
+        description: Search filter for Column help
         required: false
       - schema:
           type: string
@@ -608,7 +608,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Nom Module
+        description: Search filter for Module Name
         required: false
       - schema:
           type: string
@@ -621,7 +621,7 @@ paths:
           type: string
         in: query
         name: tsl_tooltip
-        description: Search filter for Info-bulle
+        description: Search filter for Tooltip
         required: false
       tags:
       - MdfTranslateField
@@ -1103,13 +1103,13 @@ paths:
           type: string
         in: query
         name: lov_code_id__lov_list_id
-        description: Search filter for Liste Code
+        description: Search filter for Code List
         required: false
       - schema:
           type: string
         in: query
         name: lov_code_id__lov_list_id__lov_name
-        description: Search filter for Liste
+        description: Search filter for List
         required: false
       - schema:
           type: string
@@ -1121,7 +1121,7 @@ paths:
           type: integer
         in: query
         name: lov_code_id__lov_order_by
-        description: Search filter for Ordre
+        description: Search filter for Order
         required: false
       - schema:
           type: string
@@ -1131,13 +1131,13 @@ paths:
           - FRA
         in: query
         name: lov_lang
-        description: Search filter for Langue
+        description: Search filter for Language
         required: false
       - schema:
           type: string
         in: query
         name: lov_value
-        description: Search filter for Valeur
+        description: Search filter for Value
         required: false
       - schema:
           type: string
@@ -1149,7 +1149,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Nom Module
+        description: Search filter for Module Name
         required: false
       tags:
       - MdfFieldListValue
@@ -1202,13 +1202,13 @@ paths:
           type: string
         in: query
         name: lov_list_id
-        description: Search filter for Liste
+        description: Search filter for List
         required: false
       - schema:
           type: string
         in: query
         name: lov_list_id__lov_name
-        description: Search filter for Liste
+        description: Search filter for List
         required: false
       - schema:
           type: string
@@ -1220,7 +1220,7 @@ paths:
           type: integer
         in: query
         name: lov_order_by
-        description: Search filter for Ordre
+        description: Search filter for Order
         required: false
       - schema:
           type: string
@@ -1238,25 +1238,25 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Nom Module
+        description: Search filter for Module Name
         required: false
       - schema:
           type: string
         in: query
         name: lov_color
-        description: Search filter for Couleur du texte
+        description: Search filter for Text color
         required: false
       - schema:
           type: string
         in: query
         name: lov_color_bg
-        description: Search filter for Couleur du fond
+        description: Search filter for Background color
         required: false
       - schema:
           type: string
         in: query
         name: lov_icon
-        description: Search filter for Icone
+        description: Search filter for Icon
         required: false
       - schema:
           type: string
@@ -1265,7 +1265,7 @@ paths:
           - L
         in: query
         name: lov_display
-        description: Search filter for Affichage en liste
+        description: Search filter for Display on list
         required: false
       tags:
       - MdfListCode
@@ -1753,13 +1753,13 @@ paths:
           type: string
         in: query
         name: tsl_id
-        description: Search filter for Cible
+        description: Search filter for Target
         required: false
       - schema:
           type: string
         in: query
         name: tsl_target
-        description: Search filter for Cible
+        description: Search filter for Target
         required: false
       - schema:
           type: string
@@ -1769,13 +1769,13 @@ paths:
           - FRA
         in: query
         name: tsl_lang
-        description: Search filter for Langue
+        description: Search filter for Language
         required: false
       - schema:
           type: string
         in: query
         name: tsl_value
-        description: Search filter for Traduction
+        description: Search filter for Translation
         required: false
       - schema:
           type: string
@@ -1787,7 +1787,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Nom Module
+        description: Search filter for Module Name
         required: false
       tags:
       - MdfTranslate
@@ -1999,12 +1999,12 @@ info:
   version: '1'
 tags:
 - name: MdfFieldListValue
-  description: Liste
+  description: List
 - name: MdfList
-  description: Liste
+  description: List
 - name: MdfListCode
-  description: Item de liste
+  description: List item
 - name: MdfTranslate
-  description: Traduction
+  description: Translation
 - name: MdfTranslateField
-  description: Traduction d'attribut
+  description: MdfTranslateField

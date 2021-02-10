@@ -11,7 +11,7 @@
 	"type": "git",
 	"origin": { "uri": "https://github.com/Campano/module-modificator.git" }
 }]]></mdl_url>
-		<mdl_lastupd>2020-10-16 10:46:54</mdl_lastupd>
+		<mdl_lastupd>2020-11-12 17:50:11</mdl_lastupd>
 		<mdl_comment><![CDATA[Tools to modify some application configuration. Targets untrained users.]]></mdl_comment>
 	</data>
 </object>

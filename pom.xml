@@ -8,10 +8,13 @@
   <description>Simplicite module: Modificator</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <simplicite.url>http://trustmeddev.ansm.simplicite.io</simplicite.url>
-    <simplicite.version>4.0.P24</simplicite.version>
+    <simplicite.url>https://trustmeddev.ansm.simplicite.io</simplicite.url>
+    <simplicite.version>4.0.P25</simplicite.version>
     <maven.compiler.source>14</maven.compiler.source>
     <maven.compiler.target>14</maven.compiler.target>
+    <sonar.projectKey>simplicite-modules-Modificator</sonar.projectKey>
+    <sonar.projectName>Modificator</sonar.projectName>
+    <sonar.projectVersion>1</sonar.projectVersion>
     <sonar.sources>src,resources</sonar.sources>
     <sonar.exclusions>**.min.js,**.min.css</sonar.exclusions>
     <sonar.coverage.exclusions>resources/**.js,src/**.java</sonar.coverage.exclusions>

@@ -40,7 +40,6 @@ public class MdfTool implements java.io.Serializable {
 		else{
 			List<String> mdl = new ArrayList(Arrays.asList(visibleModules.split(",")));
 			mdl.add(g.getParameter("MDF_SAVE_MODULE"));
-			AppLog.info(mdl.toString(), Grant.getSystemAdmin());
 			return 
 				"t_row_module_id.mdl_name in ('"
 				+ String.join("','", mdl)
