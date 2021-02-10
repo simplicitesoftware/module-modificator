@@ -5,14 +5,32 @@
 	<action>upsert</action>
 	<data>
 		<mdl_name>Modificator</mdl_name>
-		<mdl_version>1</mdl_version>
+		<mdl_version>1.1</mdl_version>
 		<mdl_prefix>mdf</mdl_prefix>
 		<mdl_url><![CDATA[{
 	"type": "git",
 	"origin": { "uri": "https://github.com/Campano/module-modificator.git" }
 }]]></mdl_url>
-		<mdl_lastupd>2020-11-12 17:50:11</mdl_lastupd>
+		<mdl_lastupd>2021-02-10 10:30:46</mdl_lastupd>
 		<mdl_comment><![CDATA[Tools to modify some application configuration. Targets untrained users.]]></mdl_comment>
+	</data>
+</object>
+<object>
+	<name>SystemParam</name>
+	<action>upsert</action>
+	<data>
+		<sys_code>MDF_MODULES</sys_code>
+		<sys_value><![CDATA[Demo]]></sys_value>
+		<sys_type>PRV</sys_type>
+		<sys_desc><![CDATA[Comma-separated list of editable modules for modificator or `false` to deactivate.]]></sys_desc>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
+	</data>
+	<data>
+		<sys_code>MDF_SAVE_MODULE</sys_code>
+		<sys_value><![CDATA[MdfModifications]]></sys_value>
+		<sys_type>PRV</sys_type>
+		<sys_desc/>
+		<row_module_id.mdl_name>Modificator</row_module_id.mdl_name>
 	</data>
 </object>
 <object>

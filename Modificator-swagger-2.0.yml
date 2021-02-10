@@ -2,7 +2,7 @@
 # / __(_)_ __  _ __| (_)__(_) |_ /_/
 # \__ \ | '  \| '_ \ | / _| |  _/ -_)
 # |___/_|_|_|_| .__/_|_\__|_|\__\___|
-#             |_| Module: Modificator 1
+#             |_| Module: Modificator 1.1
 paths:
   /rest/MdfList:
     get:
@@ -1735,7 +1735,7 @@ info:
     email: contact@simplicitesoftware.com
   description: API for module Modificator
   title: Modificator
-  version: '1'
+  version: '1.1'
 tags:
 - name: MdfFieldListValue
   description: List
