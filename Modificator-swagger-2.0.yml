@@ -59,7 +59,7 @@ paths:
         required: false
       - in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         type: string
         required: false
       - in: query
@@ -179,7 +179,6 @@ paths:
         - V
         - C
         - X
-        - G
         - S
         - Q
         - P
@@ -238,7 +237,7 @@ paths:
         required: false
       - in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         type: string
         required: false
       - in: query
@@ -691,7 +690,7 @@ paths:
         required: false
       - in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         type: string
         required: false
       tags:
@@ -766,7 +765,7 @@ paths:
         required: false
       - in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         type: string
         required: false
       - in: query
@@ -792,6 +791,7 @@ paths:
         enum:
         - I
         - L
+        - T
       tags:
       - MdfListCode
   /rest/MdfListCode/{row_id}:
@@ -1189,7 +1189,6 @@ paths:
         - V
         - C
         - X
-        - G
         - S
         - Q
         - P
@@ -1228,7 +1227,7 @@ paths:
         required: false
       - in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         type: string
         required: false
       tags:
@@ -1426,7 +1425,7 @@ definitions:
     type: object
     properties:
       row_module_id__mdl_name:
-        description: Module Name
+        description: Module name
         type: string
       tsl_simplehelp:
         description: Simple help
@@ -1473,7 +1472,6 @@ definitions:
         - V
         - C
         - X
-        - G
         - S
         - Q
         - P
@@ -1497,7 +1495,7 @@ definitions:
         description: Target
         type: string
       row_module_id__mdl_name:
-        description: Module Name
+        description: Module name
         type: string
       tsl_id:
         description: Target
@@ -1525,7 +1523,6 @@ definitions:
         - V
         - C
         - X
-        - G
         - S
         - Q
         - P
@@ -1544,7 +1541,7 @@ definitions:
     type: object
     properties:
       row_module_id__mdl_name:
-        description: Module Name
+        description: Module name
         type: string
       row_module_id:
         description: Module
@@ -1587,7 +1584,7 @@ definitions:
         - ENU
         - FRA
       row_module_id__mdl_name:
-        description: Module Name
+        description: Module name
         type: string
       lov_code_id__lov_list_id:
         description: Code List
@@ -1682,7 +1679,7 @@ definitions:
     type: object
     properties:
       row_module_id__mdl_name:
-        description: Module Name
+        description: Module name
         type: string
       lov_color_bg:
         description: Background color
@@ -1709,6 +1706,7 @@ definitions:
           enum:
           - I
           - L
+          - T
       lov_list_id:
         description: List
         type: string

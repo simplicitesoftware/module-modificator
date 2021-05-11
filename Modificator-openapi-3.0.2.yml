@@ -28,7 +28,7 @@ components:
       type: object
       properties:
         row_module_id__mdl_name:
-          description: Module Name
+          description: Module name
           type: string
         tsl_simplehelp:
           description: Simple help
@@ -75,7 +75,6 @@ components:
           - V
           - C
           - X
-          - G
           - S
           - Q
           - P
@@ -99,7 +98,7 @@ components:
           description: Target
           type: string
         row_module_id__mdl_name:
-          description: Module Name
+          description: Module name
           type: string
         tsl_id:
           description: Target
@@ -127,7 +126,6 @@ components:
           - V
           - C
           - X
-          - G
           - S
           - Q
           - P
@@ -146,7 +144,7 @@ components:
       type: object
       properties:
         row_module_id__mdl_name:
-          description: Module Name
+          description: Module name
           type: string
         row_module_id:
           description: Module
@@ -189,7 +187,7 @@ components:
           - ENU
           - FRA
         row_module_id__mdl_name:
-          description: Module Name
+          description: Module name
           type: string
         lov_code_id__lov_list_id:
           description: Code List
@@ -284,7 +282,7 @@ components:
       type: object
       properties:
         row_module_id__mdl_name:
-          description: Module Name
+          description: Module name
           type: string
         lov_color_bg:
           description: Background color
@@ -311,6 +309,7 @@ components:
             enum:
             - I
             - L
+            - T
         lov_list_id:
           description: List
           type: string
@@ -403,7 +402,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         required: false
       - schema:
           type: string
@@ -534,7 +533,6 @@ paths:
           - V
           - C
           - X
-          - G
           - S
           - Q
           - P
@@ -608,7 +606,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         required: false
       - schema:
           type: string
@@ -1149,7 +1147,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         required: false
       tags:
       - MdfFieldListValue
@@ -1238,7 +1236,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         required: false
       - schema:
           type: string
@@ -1263,6 +1261,7 @@ paths:
           enum:
           - I
           - L
+          - T
         in: query
         name: lov_display
         description: Search filter for Display on list
@@ -1737,7 +1736,6 @@ paths:
           - V
           - C
           - X
-          - G
           - S
           - Q
           - P
@@ -1787,7 +1785,7 @@ paths:
           type: string
         in: query
         name: row_module_id__mdl_name
-        description: Search filter for Module Name
+        description: Search filter for Module name
         required: false
       tags:
       - MdfTranslate
