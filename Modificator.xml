@@ -9,7 +9,7 @@
 		<mdl_prefix>mdf</mdl_prefix>
 		<mdl_url><![CDATA[{
 	"type": "git",
-	"origin": { "uri": "https://github.com/Campano/module-modificator.git" }
+	"origin": { "uri": "https://github.com/simplicitesoftware/module-modificator.git" }
 }]]></mdl_url>
 		<mdl_lastupd>2021-02-10 10:30:46</mdl_lastupd>
 		<mdl_comment><![CDATA[Tools to modify some application configuration. Targets untrained users.]]></mdl_comment>
